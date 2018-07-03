@@ -6,9 +6,8 @@
       <class name="intuitionsoftech.ExcelLib">
         <methods>
           <include name="japaneseMassage"/>
-          <include name="teardown"/>
-          <include name="readData"/>
           <include name="setup"/>
+          <include name="thaiMassage"/>
         </methods>
       </class> <!-- intuitionsoftech.ExcelLib -->
     </classes>

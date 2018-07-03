@@ -2,10 +2,12 @@ package intuitionsoftech;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
@@ -30,6 +32,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.ExtentReports;
@@ -39,6 +42,8 @@ import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 
 
 public class ExcelLib {
+	
+	Properties prop=new Properties();
 public 	WebDriver driver;
     XSSFWorkbook workbook;
     XSSFSheet sheet;
@@ -52,23 +57,34 @@ public 	WebDriver driver;
     ExtentHtmlReporter htmlReporter;
     
     @BeforeTest
-    public void setup()
+    public void setup() throws IOException
     {
+    	
+    	FileInputStream fis=new FileInputStream("C:\\Users\\laksh\\git\\KneadlistRepo\\Kneadlist\\configuration.properties");
+    	prop.load(fis);
+    	
     	htmlReporter=new ExtentHtmlReporter(new File(System.getProperty("user.dir")+"TestReports.html"));
     	htmlReporter.loadXMLConfig(System.getProperty("user.dir")+"/extentConfig.xml");
     	reports=new ExtentReports();
     	reports.setSystemInfo("Environment", "QA");
     	reports.attachReporter(htmlReporter);
     }
-    
-    
-	 
     @Test
-    public void readData() throws  IOException, InterruptedException
+    public void showProperties()
+    {
+    	System.out.println(prop.getProperty("firstname"));
+    	System.out.println(prop.getProperty("lastname"));
+    }
+    
+    
+    
+    @Parameters("baseUrl")
+    @Test
+    public void thaiMassage(String urlName) throws  IOException, InterruptedException
 	{
     //	Assert.assertTrue(true);
     	
-    	testInfo=reports.createTest("readData");
+    	testInfo=reports.createTest("thaiMassage");
     
     	
     	// Import excel sheet.
@@ -97,17 +113,17 @@ public 	WebDriver driver;
 				 System.out.println(password);}
 			
 			 }
-		 login(username,password);
+		 login(urlName,username,password);
 	}
 	 }
     
-    public void login(String username,String password) throws InterruptedException
+    public void login(String url,String username,String password) throws InterruptedException
     {
     	System.setProperty("webdriver.chrome.driver","E:\\Selenium-Java\\chromedriver_win32\\chromedriver.exe");
 		
 		  driver=new ChromeDriver();
 		  //To launch Knead list application
-		  driver.get("http://www.kneadlist.com/");
+		  driver.get(url);
 			driver.manage().window().maximize();
 			driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);			 
    		driver.findElement(By.xpath("//*[@id=\'navbar\']/div[1]/a[1]")).click();
@@ -159,14 +175,15 @@ public 	WebDriver driver;
 				
 				
     }
+    @Parameters("baseUrl")
     @Test
-    public void japaneseMassage()
+    public void japaneseMassage(String urlName)
     {
     	testInfo=reports.createTest("japaneseMassage");
     	System.setProperty("webdriver.chrome.driver","E:\\Selenium-Java\\chromedriver_win32\\chromedriver.exe");
     	driver=new ChromeDriver();
 		  //To launch Knead list application
-		  driver.get("http://www.kneadlist.com/");
+		  driver.get(urlName);
 			driver.manage().window().maximize();
 			driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);	
     	
@@ -179,6 +196,32 @@ public 	WebDriver driver;
 		WebDriverWait JMwait=new WebDriverWait(driver,20);
 		JMwait.until(ExpectedConditions.visibilityOf(element));
 		element.click();
+		
+		/*driver.findElement(By.xpath("//*[@id='resultdiv']/div[1]/div[1]/div/div[2]/a")).click(); //click on 'Book Now'
+		//switch to pop-up window to select service
+		Thread.sleep(2000);
+		driver.switchTo().window(driver.getWindowHandle());
+		
+		//select the service by check box
+		driver.findElement(By.xpath("//*[@id='chk23']")).click();
+		//select date and time
+		WebElement date_element=driver.findElement(By.xpath("//*[@id=\'bookdate\']"));
+		date_element.sendKeys("16-08-2018 18:00:00");
+		date_element.click();
+		//click on 'confirm' button
+		driver.findElement(By.id("popupbookingbtn")).click();
+		WebElement confirm_element=driver.findElement(By.id("confirmbtn"));
+		JMwait.until(ExpectedConditions.visibilityOf(confirm_element));
+		confirm_element.click();
+		Thread.sleep(15000);
+	 String success_msg=   driver.findElement(By.xpath("//div[@id='bookNowModal']//div[@id='booking_success_alert']")).getText();
+	  System.out.println(success_msg);
+	  Thread.sleep(2000);
+	  driver.findElement(By.xpath("//*[@id='bookNowModal']/div/div/div[1]/button/span")).click();
+	  Thread.sleep(2000);*/
+//	driver.findElement(By.xpath("//*[@id='navbar']/div/a")).click();
+//		Thread.sleep(2000);
+		
 		testInfo.log(Status.PASS,"This test case passed successfully");
 		reports.flush();
 		driver.close();

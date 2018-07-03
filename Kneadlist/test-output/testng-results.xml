@@ -1,29 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="3" passed="3">
+<testng-results skipped="0" failed="0" ignored="0" total="4" passed="4">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="50191" started-at="2018-07-02T01:19:08Z" finished-at="2018-07-02T01:19:58Z">
+  <suite name="Suite" duration-ms="70984" started-at="2018-07-03T12:11:32Z" finished-at="2018-07-03T12:12:43Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="50191" started-at="2018-07-02T01:19:08Z" finished-at="2018-07-02T01:19:58Z">
+    <test name="Test" duration-ms="70984" started-at="2018-07-03T12:11:32Z" finished-at="2018-07-03T12:12:43Z">
       <class name="intuitionsoftech.ExcelLib">
-        <test-method status="PASS" signature="setup()[pri:0, instance:intuitionsoftech.ExcelLib@1ce92674]" name="setup" is-config="true" duration-ms="177" started-at="2018-07-02T01:19:08Z" finished-at="2018-07-02T01:19:08Z">
+        <test-method status="PASS" signature="setup()[pri:0, instance:intuitionsoftech.ExcelLib@5cb9f472]" name="setup" is-config="true" duration-ms="257" started-at="2018-07-03T12:11:32Z" finished-at="2018-07-03T12:11:33Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="failedTest()[pri:0, instance:intuitionsoftech.ExcelLib@1ce92674]" name="failedTest" duration-ms="327" started-at="2018-07-02T01:19:08Z" finished-at="2018-07-02T01:19:08Z">
+        <test-method status="PASS" signature="failedTest()[pri:0, instance:intuitionsoftech.ExcelLib@5cb9f472]" name="failedTest" duration-ms="422" started-at="2018-07-03T12:11:33Z" finished-at="2018-07-03T12:11:33Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- failedTest -->
-        <test-method status="PASS" signature="japaneseMassage()[pri:0, instance:intuitionsoftech.ExcelLib@1ce92674]" name="japaneseMassage" duration-ms="13815" started-at="2018-07-02T01:19:08Z" finished-at="2018-07-02T01:19:22Z">
+        <test-method status="PASS" signature="japaneseMassage(java.lang.String)[pri:0, instance:intuitionsoftech.ExcelLib@5cb9f472]" name="japaneseMassage" duration-ms="27693" started-at="2018-07-03T12:11:33Z" finished-at="2018-07-03T12:12:01Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[http://www.kneadlist.com/]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- japaneseMassage -->
-        <test-method status="PASS" signature="readData()[pri:0, instance:intuitionsoftech.ExcelLib@1ce92674]" name="readData" duration-ms="35851" started-at="2018-07-02T01:19:22Z" finished-at="2018-07-02T01:19:58Z">
+        <test-method status="PASS" signature="showProperties()[pri:0, instance:intuitionsoftech.ExcelLib@5cb9f472]" name="showProperties" duration-ms="3" started-at="2018-07-03T12:12:01Z" finished-at="2018-07-03T12:12:01Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- readData -->
+        </test-method> <!-- showProperties -->
+        <test-method status="PASS" signature="thaiMassage(java.lang.String)[pri:0, instance:intuitionsoftech.ExcelLib@5cb9f472]" name="thaiMassage" duration-ms="42564" started-at="2018-07-03T12:12:01Z" finished-at="2018-07-03T12:12:43Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[http://www.kneadlist.com/]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- thaiMassage -->
       </class> <!-- intuitionsoftech.ExcelLib -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
 </testng-results>
